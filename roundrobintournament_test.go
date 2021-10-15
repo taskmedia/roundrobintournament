@@ -14,6 +14,12 @@ func TestGenerateRoundRobinTournamentMatches3Teams(t *testing.T) {
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
 
+	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+
+	if len(matches) != expectedLenMatches {
+		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
+	}
+
 	expectedmatches := [][]string{
 		{"TeamA", "TeamB"},
 		{"TeamA", "TeamC"},
@@ -35,6 +41,12 @@ func TestGenerateRoundRobinTournamentMatches4Teams(t *testing.T) {
 	}
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
+
+	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+
+	if len(matches) != expectedLenMatches {
+		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
+	}
 
 	expectedmatches := [][]string{
 		{"TeamA", "TeamB"},
