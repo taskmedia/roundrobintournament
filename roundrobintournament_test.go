@@ -15,7 +15,7 @@ func TestGenerateRoundRobinTournamentMatches3Teams(t *testing.T) {
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
 
-	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+	expectedLenMatches := expectedMatches(len(teams))
 
 	if len(matches) != expectedLenMatches {
 		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
@@ -43,7 +43,7 @@ func TestGenerateRoundRobinTournamentMatches4Teams(t *testing.T) {
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
 
-	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+	expectedLenMatches := expectedMatches(len(teams))
 
 	if len(matches) != expectedLenMatches {
 		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
@@ -72,7 +72,7 @@ func TestGenerateRoundRobinTournamentMatches10Teams(t *testing.T) {
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
 
-	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+	expectedLenMatches := expectedMatches(len(teams))
 
 	if len(matches) != expectedLenMatches {
 		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
@@ -88,11 +88,16 @@ func TestGenerateRoundRobinTournamentMatches11Teams(t *testing.T) {
 
 	matches := GenerateRoundRobinTournamentMatches(teams)
 
-	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+	expectedLenMatches := expectedMatches(len(teams))
 
 	if len(matches) != expectedLenMatches {
 		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
 	}
+}
+
+// calculates the expected number of matches by a given team length
+func expectedMatches(lenTeams int) int {
+	return lenTeams * (lenTeams - 1) / 2
 }
 
 // compares len and every item of two slices
