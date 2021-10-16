@@ -95,6 +95,7 @@ func TestGenerateRoundRobinTournamentMatches11Teams(t *testing.T) {
 	}
 }
 
+// compares len and every item of two slices
 func slicesEqual(a, b [][]string) bool {
 	if len(a) != len(b) {
 		return false
