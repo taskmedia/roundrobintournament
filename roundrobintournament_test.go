@@ -1,6 +1,7 @@
 package roundrobintournament
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -59,6 +60,38 @@ func TestGenerateRoundRobinTournamentMatches4Teams(t *testing.T) {
 
 	if !slicesEqual(expectedmatches, matches) {
 		t.Fatalf("Expected matches for a four teams tournament was not satisfied:\nexpected:\n%s\n\ngot:\n%s\n", expectedmatches, matches)
+	}
+}
+
+// testing large number of even teams
+func TestGenerateRoundRobinTournamentMatches10Teams(t *testing.T) {
+	teams := make([]string, 0)
+	for i := 1; i <= 10; i++ {
+		teams = append(teams, fmt.Sprintf("Team %d", i))
+	}
+
+	matches := GenerateRoundRobinTournamentMatches(teams)
+
+	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+
+	if len(matches) != expectedLenMatches {
+		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
+	}
+}
+
+// testing large number of odd teams
+func TestGenerateRoundRobinTournamentMatches11Teams(t *testing.T) {
+	teams := make([]string, 0)
+	for i := 1; i <= 11; i++ {
+		teams = append(teams, fmt.Sprintf("Team %d", i))
+	}
+
+	matches := GenerateRoundRobinTournamentMatches(teams)
+
+	expectedLenMatches := len(teams) * (len(teams) - 1) / 2
+
+	if len(matches) != expectedLenMatches {
+		t.Fatalf("Length of matches (%d) not as expected (%d)", len(matches), expectedLenMatches)
 	}
 }
 
