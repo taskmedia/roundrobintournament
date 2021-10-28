@@ -1,12 +1,15 @@
 package roundrobintournament
 
 import (
+	"fmt"
+
 	"github.com/google/uuid"
 )
 
 // GenerateRoundRobinTournamentMatches generates a 2d slice of matches of a single round robin tournament.
 // Each team will play one time against all other teams.
-func GenerateRoundRobinTournamentMatches(teams []string) [][]string {
+func GenerateRoundRobinTournamentMatchesByTeams(teams []string) [][]string {
+
 	matches := make([][]string, 0)
 
 	dummy := "even"
@@ -55,4 +58,13 @@ func stringSlicecontains(s []string, e string) bool {
 		}
 	}
 	return false
+}
+
+func GenerateRoundRobinTournamentMatchesByNumber(numberTeams int) [][]string {
+	teams := make([]string, 0)
+	for i := 1; i <= numberTeams; i++ {
+		teams = append(teams, fmt.Sprintf("Team %d", i))
+	}
+
+	return GenerateRoundRobinTournamentMatchesByTeams(teams)
 }
