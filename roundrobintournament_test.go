@@ -23,8 +23,8 @@ func TestGenerateRoundRobinTournamentMatches3Teams(t *testing.T) {
 
 	expectedmatches := [][]string{
 		{"TeamA", "TeamB"},
+		{"TeamB", "TeamC"},
 		{"TeamA", "TeamC"},
-		{"TeamC", "TeamB"},
 	}
 
 	if !slicesEqual(expectedmatches, matches) {
